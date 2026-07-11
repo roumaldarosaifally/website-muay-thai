@@ -1,0 +1,119 @@
+:root{
+  --font-display:"Anton","Bebas Neue",sans-serif;
+  --font-body:"Inter",sans-serif;
+  --blood:#c8391a;
+  --bone:#f0ead6;
+  --ink:#1a1712;
+  --ember:#e69240;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bone);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+em{font-style:italic}
+
+.display{font-family:var(--font-display);text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.huge{font-size:clamp(3.5rem,14vw,12rem);line-height:.85}
+.big{font-size:clamp(2.5rem,6vw,4.5rem)}
+.med{font-size:1.75rem}
+.blood{color:var(--blood)}
+.ember{color:var(--ember)}
+.muted{color:rgba(26,23,18,.7);margin-top:1rem}
+.body{font-size:1.125rem;line-height:1.65;margin-top:1.25rem}
+.max-w{max-width:640px}
+.mt{margin-top:1.5rem}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(26,23,18,.85);backdrop-filter:blur(10px);color:var(--bone)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem}
+.brand{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.2em}
+.accent{color:var(--blood)}
+.nav-links{display:none;gap:2rem;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase}
+.nav-links a:hover{color:var(--ember)}
+@media(min-width:768px){.nav-links{display:flex}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;overflow:hidden;background:var(--ink);color:var(--bone)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.hero-fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,23,18,.4),transparent,var(--ink))}
+.hero-inner{position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:10rem 1.5rem 6rem;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+.eyebrow{display:flex;align-items:center;gap:1rem;font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember)}
+.rule{display:inline-block;height:1px;width:3rem;background:var(--ember)}
+.lede{margin-top:2rem;max-width:36rem;font-size:1.125rem;color:rgba(240,234,214,.8)}
+.stats{margin-top:2.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:32rem;border-top:1px solid rgba(240,234,214,.2);padding-top:1.5rem}
+.stat-n{font-family:var(--font-display);font-size:2.5rem;color:var(--ember)}
+.stat-l{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,234,214,.6);margin-top:.25rem}
+
+/* SECTION SHELL */
+.section{padding:8rem 1.5rem;max-width:1152px;margin:0 auto}
+.section.dark,.section.blood-bg{max-width:none;margin:0;padding-left:1.5rem;padding-right:1.5rem}
+.section.dark{background:var(--ink);color:var(--bone)}
+.section.blood-bg{background:var(--blood);color:var(--bone)}
+.section.dark>*,.section.blood-bg>*{max-width:1152px;margin-left:auto;margin-right:auto}
+
+.grid-12{display:grid;grid-template-columns:repeat(12,1fr);gap:3rem;align-items:start}
+.grid-12.end{align-items:end;margin-bottom:4rem}
+.col-4{grid-column:span 12}
+.col-5{grid-column:span 12}
+.col-7{grid-column:span 12}
+.col-8{grid-column:span 12}
+@media(min-width:768px){
+  .col-4{grid-column:span 4}
+  .col-5{grid-column:span 5}
+  .col-7{grid-column:span 7}
+  .col-8{grid-column:span 8}
+}
+
+.section-label{display:flex;align-items:center;gap:1rem}
+.section-label .n{font-family:var(--font-display);font-size:3.75rem}
+.section-label .t{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase}
+
+/* STYLE section */
+.two-col{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.two-col{grid-template-columns:1fr 1fr}}
+.gray{filter:grayscale(1)}
+.tall{width:100%;height:500px;object-fit:cover}
+.tall-med{margin-top:2.5rem;width:100%;height:350px;object-fit:cover}
+.stack{display:flex;flex-direction:column;gap:2rem}
+.weapon{border-left:2px solid var(--blood);padding-left:1.5rem}
+.w-name{font-family:var(--font-display);font-size:1.875rem;text-transform:uppercase;letter-spacing:.02em}
+.w-name .thai{color:var(--ember);font-size:.9rem;margin-left:.5rem;font-family:var(--font-body);letter-spacing:0;font-weight:400}
+.weapon p{margin-top:.5rem;color:rgba(240,234,214,.7)}
+
+/* GEAR */
+.wide{width:100%;height:400px;object-fit:cover;margin-bottom:4rem}
+@media(min-width:768px){.wide{height:500px}}
+.gear-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+@media(min-width:768px){.gear-grid{grid-template-columns:repeat(3,1fr)}}
+.gear-card{border-top:2px solid var(--ink);padding-top:1.5rem}
+.gear-card .num{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(26,23,18,.5)}
+.gear-card h3{font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase;margin-top:.5rem}
+.gear-card p{margin-top:.75rem;color:rgba(26,23,18,.75)}
+
+/* TOURNAMENT */
+.round{display:flex;gap:1.5rem;border-bottom:1px solid rgba(240,234,214,.25);padding-bottom:1.5rem;margin-bottom:2rem}
+.round .tag{font-family:var(--font-display);font-size:3rem;line-height:1;width:5rem;flex-shrink:0}
+.round h3{font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase}
+.round p{margin-top:.5rem;color:rgba(240,234,214,.85)}
+.scoring{padding-top:1rem}
+.scoring h3{font-family:var(--font-display);text-transform:uppercase;font-size:1.5rem}
+.scoring p{margin-top:.75rem;color:rgba(240,234,214,.85)}
+
+/* IDEAS */
+.ideas-grid{margin-top:3.5rem;display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.ideas-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.ideas-grid{grid-template-columns:repeat(3,1fr)}}
+.idea{padding:1.5rem;background:var(--ink);color:var(--bone);transition:background .2s}
+.idea:hover{background:var(--blood)}
+.idea .num{font-family:var(--font-display);font-size:2.25rem;color:var(--ember)}
+.idea:hover .num{color:var(--bone)}
+.idea h3{margin-top:1rem;font-family:var(--font-display);font-size:1.25rem;text-transform:uppercase}
+.idea p{margin-top:.5rem;font-size:.875rem;color:rgba(240,234,214,.75)}
+
+/* FOOTER */
+.footer{background:var(--ink);color:rgba(240,234,214,.7);padding:3rem 1.5rem}
+.footer-inner{max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;justify-content:space-between}
+@media(min-width:768px){.footer-inner{flex-direction:row;align-items:center}}
+.brand-lg{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.2em;color:var(--bone)}
+.footer-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
