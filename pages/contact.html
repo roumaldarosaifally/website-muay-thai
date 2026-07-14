@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
 <script src="https://kit.fontawesome.com/0c54b7787d.js" crossorigin="anonymous"></script>
 </head>
 <body id="top">
@@ -25,16 +26,22 @@
       <a href="schedule.html">Schedule</a>
       <a href="contact.html" style="color: #c8391a;">Contact</a>
     </div>
+    <div class="site-search">
+      <label for="site-search" class="visually-hidden">Search pages</label>
+      <input type="search" id="site-search" placeholder="Search pages..." autocomplete="off">
+      <div id="site-search-results" class="search-results" role="listbox"></div>
+    </div>
   </div>
 </nav>
 
 <main>
   <section id="contact" class="section">
     <div class="grid-12">
-      <div class="col-4"><div class="section-label"><span class="n blood">8</span><span class="t">Contact</span></div></div>
-      <div class="col-8">
+      <div class="col-4">
+        <div class="section-label"><span class="n blood">8</span><span class="t">Contact</span></div>
         <img src="../assets/images/logo.jpg" alt="Rose Hill Muay Thai Club logo" style="width: 100%; max-width: 220px; margin-top: 2rem; border-radius: 8px;" />
-
+      </div>
+      <div class="col-8">
         <h1 class="display big">Join the<br>Camp.</h1>
         <p class="body">Ready to start training or want to learn more about the art of eight limbs? Reach out to us through the following channels:</p>
         
@@ -67,12 +74,15 @@
     <h1 style="margin-top: 0; font-size: 1.5rem;">Send us a Message</h1>
     <form id="contactForm" onsubmit="return validateForm(event)">
       <div style="margin-bottom: 1.5rem;">
+        <label for="name" class="visually-hidden">Your Name</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required style="width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
       </div>
       <div style="margin-bottom: 1.5rem;">
+        <label for="email" class="visually-hidden">Your Email</label>
         <input type="email" id="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
       </div>
       <div style="margin-bottom: 1.5rem;">
+        <label for="message" class="visually-hidden">Your Message</label>
         <textarea id="message" name="message" placeholder="Your Message" required style="width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; height: 180px; font-size: 1rem;"></textarea>
       </div>
       <button type="submit" style="width: 100%; padding: 1.2rem; background-color: #c8391a; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1.1rem; font-weight: bold;">Send Message</button>

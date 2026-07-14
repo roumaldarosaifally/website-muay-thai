@@ -35,23 +35,109 @@ const IDEAS = [
 
 const pad = n => String(n).padStart(2,"0");
 
-document.getElementById("gear-grid").innerHTML = GEAR.map(([n,d],i)=>`
-  <div class="gear-card">
-    <div class="num">${pad(i+1)}</div>
-    <h3>${n}</h3>
-    <p>${d}</p>
-  </div>`).join("");
+const gearGrid = document.getElementById("gear-grid");
+if (gearGrid) {
+  gearGrid.innerHTML = GEAR.map(([n,d],i)=>`
+    <div class="gear-card">
+      <div class="num">${pad(i+1)}</div>
+      <h3>${n}</h3>
+      <p>${d}</p>
+    </div>`).join("");
+}
 
-document.getElementById("rounds").innerHTML = ROUNDS.map(([t,n,d])=>`
-  <div class="round">
-    <div class="tag">${t}</div>
-    <div><h3>${n}</h3><p>${d}</p></div>
-  </div>`).join("");
+const roundsEl = document.getElementById("rounds");
+if (roundsEl) {
+  roundsEl.innerHTML = ROUNDS.map(([t,n,d])=>`
+    <div class="round">
+      <div class="tag">${t}</div>
+      <div><h3>${n}</h3><p>${d}</p></div>
+    </div>`).join("");
+}
 
-document.getElementById("ideas-grid").innerHTML = IDEAS.map(([n,d],i)=>`
-  <div class="idea">
-    <div class="num">${pad(i+1)}</div>
-    <h3>${n}</h3>
-    <p>${d}</p>
-  </div>`).join("");
+const ideasGrid = document.getElementById("ideas-grid");
+if (ideasGrid) {
+  ideasGrid.innerHTML = IDEAS.map(([n,d],i)=>`
+    <div class="idea">
+      <div class="num">${pad(i+1)}</div>
+      <h3>${n}</h3>
+      <p>${d}</p>
+    </div>`).join("");
+}
+
+/* ---- Site search ---- */
+const SEARCH_INDEX = [
+  { title:"Home",       desc:"Homepage / hero introduction",        keywords:"home landing hero eight limbs", url:"index.html" },
+  { title:"Origin",     desc:"History of Muay Thai",                keywords:"origin history muay boran battlefield siamese", url:"pages/about.html" },
+  { title:"Style",      desc:"The eight limbs fighting style",      keywords:"style fists elbows knees shins weapons", url:"pages/style.html" },
+  { title:"Gear",       desc:"Equipment guide",                     keywords:"gear gloves wraps shin guards mouthguard cup shorts mongkol prajioud heavy bag pads", url:"pages/gear.html" },
+  { title:"Tournament", desc:"How a fight works, rounds & scoring", keywords:"tournament rounds scoring wai kru sarama judges", url:"pages/tournament.html" },
+  { title:"Techniques", desc:"The arsenal of strikes",              keywords:"technique teep roundhouse tae clinch plum flying knee kao loy spinning elbow sok glab", url:"pages/technique.html" },
+  { title:"Nak Muay",   desc:"Legendary fighters",                  keywords:"fighter buakaw saenchai samart nak muay legends", url:"pages/fighter.html" },
+  { title:"Schedule",   desc:"Class times in Rose Hill",            keywords:"schedule classes beginners fighters open mat rose hill plaines wilhems", url:"pages/schedule.html" },
+  { title:"Contact",    desc:"Reach the club, map & form",          keywords:"contact email phone instagram facebook map join camp", url:"pages/contact.html" },
+  { title:"FAQ",        desc:"Frequently asked questions",          keywords:"faq questions gear beginners safe sparring", url:"pages/faq.html" },
+];
+
+function resolveSearchUrl(url, inPages) {
+  if (!inPages) return url;
+  if (url === "index.html") return "../index.html";
+  if (url.startsWith("pages/")) return url.replace("pages/", "");
+  return url;
+}
+
+function initSiteSearch() {
+  const input = document.getElementById("site-search");
+  const results = document.getElementById("site-search-results");
+  if (!input || !results) return;
+
+  const inPages = location.pathname.includes("/pages/");
+
+  const render = (query) => {
+    const q = query.trim().toLowerCase();
+    if (!q) { results.style.display = "none"; results.innerHTML = ""; return; }
+
+    const matches = SEARCH_INDEX.filter(p =>
+      (p.title + " " + p.desc + " " + p.keywords).toLowerCase().includes(q)
+    );
+
+    results.innerHTML = matches.length
+      ? matches.map(p => `<a class="search-result" href="${resolveSearchUrl(p.url, inPages)}" role="option"><strong>${p.title}</strong><span>${p.desc}</span></a>`).join("")
+      : `<div class="search-empty">No pages found for "${query}"</div>`;
+    results.style.display = "block";
+  };
+
+  input.addEventListener("input", (e) => render(e.target.value));
+  input.addEventListener("focus", (e) => { if (e.target.value) render(e.target.value); });
+
+  document.addEventListener("click", (e) => {
+    if (!results.contains(e.target) && e.target !== input) {
+      results.style.display = "none";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initSiteSearch);
+
+/* ---- Contact form validation ---- */
+function validateForm(event) {
+  event.preventDefault();
+  const form = event.target;
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!name || !email || !message) {
+    alert("Please fill in your name, email, and message before sending.");
+    return false;
+  }
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return false;
+  }
+
+  alert("Thanks, " + name + " — your message has been noted. (This form is a demo and isn't wired up to send email yet.)");
+  form.reset();
+  return false;
+}
 
