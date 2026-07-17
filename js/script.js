@@ -64,7 +64,7 @@ if (ideasGrid) {
     </div>`).join("");
 }
 
-/* ---- Site search ---- */
+
 const SEARCH_INDEX = [
   { title:"Home",       desc:"Homepage / hero introduction",        keywords:"home landing hero eight limbs", url:"index.html" },
   { title:"Origin",     desc:"History of Muay Thai",                keywords:"origin history muay boran battlefield siamese", url:"pages/about.html" },
@@ -118,7 +118,7 @@ function initSiteSearch() {
 
 document.addEventListener("DOMContentLoaded", initSiteSearch);
 
-/* ---- Contact form validation ---- */
+
 function validateForm(event) {
   event.preventDefault();
   const form = event.target;
